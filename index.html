@@ -22,7 +22,7 @@
             text-align: center;
             padding: 10px;
             margin-bottom: 20px;
-            text-shadow: -1px -1px 0 #fff412, 1px -1px 0 #fff412, -1px 1px 0 #fff412, 1px 1px 0 #fff412; /* Yellow outline */
+            text-shadow: -1px -1px 0 #fff412, 1px -1px 0 #fff412, -1px 1px 0 #fff412, 1px 1px 0 #fff412;
         }
         .search-bar {
             margin-bottom: 20px;
@@ -87,16 +87,16 @@
             padding: 15px;
             text-align: center;
             border-bottom: 1px solid #ddd;
-            border-right: 1px solid #ddd; /* Column divider */
+            border-right: 1px solid #ddd;
             transition: background-color 0.3s;
             cursor: pointer;
         }
         .table th:last-child, .table td:last-child {
-            border-right: none; /* Remove right border from last column */
+            border-right: none;
         }
         .table th {
-            background-color: #fff412; /* Header background color */
-            color: black; /* Header text color */
+            background-color: #fff412;
+            color: black;
             font-weight: 500;
         }
         .table td {
@@ -453,10 +453,9 @@
 
     <script>
         // Initialize Supabase
-        const { createClient } = supabase;
         const supabaseUrl = 'https://rctbrwsyduxrqlzhmvik.supabase.co';
         const supabaseKey = 'sb_publishable_zMY6_eSxwHZTFLWFMT8UbA_TKXqPYjW';
-        const supabase = createClient(supabaseUrl, supabaseKey);
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
         let currentCell;
         let currentCellName;
