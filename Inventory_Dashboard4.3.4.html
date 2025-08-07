@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard with Persistent Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-shadow: -1px -1px 0 #fff412, 1px -1px 0 #fff412, -1px 1px 0 #fff412, 1px 1px 0 #fff412; /* Yellow outline */
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+        #searchInput {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .search-results {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .search-results ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .search-results li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .search-results li:hover {
+            background-color: #f4f4f4;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .table {
+            border-collapse: collapse;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 15px;
+        }
+        .table:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .table th, .table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd; /* Column divider */
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .table th:last-child, .table td:last-child {
+            border-right: none; /* Remove right border from last column */
+        }
+        .table th {
+            background-color: #fff412; /* Header background color */
+            color: black; /* Header text color */
+            font-weight: 500;
+        }
+        .table td {
+            background-color: #ffffff;
+            color: #333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 300px;
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #cellInput {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .cell-list {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .cell-list h3 {
+            margin-top: 0;
+        }
+        .cell-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .cell-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .cell-list li:last-child {
+            border-bottom: none;
+        }
+        .save-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .save-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Site Header -->
+    <div class="header">INVENTORY DASHBOARD</div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." oninput="filterList()" onblur="hideDropdown()">
+        <div class="search-results" id="searchResults" style="display: none;">
+            <ul id="searchResultsList">
+                <!-- Search results will be dynamically generated here -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <!-- Table 1: 4 columns, first 2 with 5 rows, last 2 with 6 rows -->
+        <table class="table">
+            <thead><tr><th colspan="4">1</th></tr></thead>
+            <tbody>
+                <!-- First 2 columns with 5 rows -->
+                <tr>
+                    <td onclick="openModal(this, '1.1.1')" data-input-text="">1.1.1</td>
+                    <td onclick="openModal(this, '1.2.1')" data-input-text="">1.2.1</td>
+                    <td onclick="openModal(this, '1.3.1')" data-input-text="">1.3.1</td>
+                    <td onclick="openModal(this, '1.4.1')" data-input-text="">1.4.1</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '1.1.2')" data-input-text="">1.1.2</td>
+                    <td onclick="openModal(this, '1.2.2')" data-input-text="">1.2.2</td>
+                    <td onclick="openModal(this, '1.3.2')" data-input-text="">1.3.2</td>
+                    <td onclick="openModal(this, '1.4.2')" data-input-text="">1.4.2</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '1.1.3')" data-input-text="">1.1.3</td>
+                    <td onclick="openModal(this, '1.2.3')" data-input-text="">1.2.3</td>
+                    <td onclick="openModal(this, '1.3.3')" data-input-text="">1.3.3</td>
+                    <td onclick="openModal(this, '1.4.3')" data-input-text="">1.4.3</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '1.1.4')" data-input-text="">1.1.4</td>
+                    <td onclick="openModal(this, '1.2.4')" data-input-text="">1.2.4</td>
+                    <td onclick="openModal(this, '1.3.4')" data-input-text="">1.3.4</td>
+                    <td onclick="openModal(this, '1.4.4')" data-input-text="">1.4.4</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '1.1.5')" data-input-text="">1.1.5</td>
+                    <td onclick="openModal(this, '1.2.5')" data-input-text="">1.2.5</td>
+                    <td onclick="openModal(this, '1.3.5')" data-input-text="">1.3.5</td>
+                    <td onclick="openModal(this, '1.4.5')" data-input-text="">1.4.5</td>
+                </tr>
+                <!-- Last 2 columns with 6 rows -->
+                <tr>
+                    <td></td><td></td>
+                    <td onclick="openModal(this, '1.3.6')" data-input-text="">1.3.6</td>
+                    <td onclick="openModal(this, '1.4.6')" data-input-text="">1.4.6</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 2: 4 columns, 5 rows -->
+        <table class="table">
+            <thead><tr><th colspan="4">2</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td onclick="openModal(this, '2.1.1')" data-input-text="">2.1.1</td>
+                    <td onclick="openModal(this, '2.2.1')" data-input-text="">2.2.1</td>
+                    <td onclick="openModal(this, '2.3.1')" data-input-text="">2.3.1</td>
+                    <td onclick="openModal(this, '2.4.1')" data-input-text="">2.4.1</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '2.1.2')" data-input-text="">2.1.2</td>
+                    <td onclick="openModal(this, '2.2.2')" data-input-text="">2.2.2</td>
+                    <td onclick="openModal(this, '2.3.2')" data-input-text="">2.3.2</td>
+                    <td onclick="openModal(this, '2.4.2')" data-input-text="">2.4.2</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '2.1.3')" data-input-text="">2.1.3</td>
+                    <td onclick="openModal(this, '2.2.3')" data-input-text="">2.2.3</td>
+                    <td onclick="openModal(this, '2.3.3')" data-input-text="">2.3.3</td>
+                    <td onclick="openModal(this, '2.4.3')" data-input-text="">2.4.3</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '2.1.4')" data-input-text="">2.1.4</td>
+                    <td onclick="openModal(this, '2.2.4')" data-input-text="">2.2.4</td>
+                    <td onclick="openModal(this, '2.3.4')" data-input-text="">2.3.4</td>
+                    <td onclick="openModal(this, '2.4.4')" data-input-text="">2.4.4</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '2.1.5')" data-input-text="">2.1.5</td>
+                    <td onclick="openModal(this, '2.2.5')" data-input-text="">2.2.5</td>
+                    <td onclick="openModal(this, '2.3.5')" data-input-text="">2.3.5</td>
+                    <td onclick="openModal(this, '2.4.5')" data-input-text="">2.4.5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 3: 4 columns, 5 rows -->
+        <table class="table">
+            <thead><tr><th colspan="4">3</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td onclick="openModal(this, '3.1.1')" data-input-text="">3.1.1</td>
+                    <td onclick="openModal(this, '3.2.1')" data-input-text="">3.2.1</td>
+                    <td onclick="openModal(this, '3.3.1')" data-input-text="">3.3.1</td>
+                    <td onclick="openModal(this, '3.4.1')" data-input-text="">3.4.1</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '3.1.2')" data-input-text="">3.1.2</td>
+                    <td onclick="openModal(this, '3.2.2')" data-input-text="">3.2.2</td>
+                    <td onclick="openModal(this, '3.3.2')" data-input-text="">3.3.2</td>
+                    <td onclick="openModal(this, '3.4.2')" data-input-text="">3.4.2</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '3.1.3')" data-input-text="">3.1.3</td>
+                    <td onclick="openModal(this, '3.2.3')" data-input-text="">3.2.3</td>
+                    <td onclick="openModal(this, '3.3.3')" data-input-text="">3.3.3</td>
+                    <td onclick="openModal(this, '3.4.3')" data-input-text="">3.4.3</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '3.1.4')" data-input-text="">3.1.4</td>
+                    <td onclick="openModal(this, '3.2.4')" data-input-text="">3.2.4</td>
+                    <td onclick="openModal(this, '3.3.4')" data-input-text="">3.3.4</td>
+                    <td onclick="openModal(this, '3.4.4')" data-input-text="">3.4.4</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '3.1.5')" data-input-text="">3.1.5</td>
+                    <td onclick="openModal(this, '3.2.5')" data-input-text="">3.2.5</td>
+                    <td onclick="openModal(this, '3.3.5')" data-input-text="">3.3.5</td>
+                    <td onclick="openModal(this, '3.4.5')" data-input-text="">3.4.5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 4: 4 columns, first column with 6 rows -->
+        <table class="table">
+            <thead><tr><th colspan="4">4</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td onclick="openModal(this, '4.1.1')" data-input-text="">4.1.1</td>
+                    <td onclick="openModal(this, '4.2.1')" data-input-text="">4.2.1</td>
+                    <td onclick="openModal(this, '4.3.1')" data-input-text="">4.3.1</td>
+                    <td onclick="openModal(this, '4.4.1')" data-input-text="">4.4.1</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '4.1.2')" data-input-text="">4.1.2</td>
+                    <td onclick="openModal(this, '4.2.2')" data-input-text="">4.2.2</td>
+                    <td onclick="openModal(this, '4.3.2')" data-input-text="">4.3.2</td>
+                    <td onclick="openModal(this, '4.4.2')" data-input-text="">4.4.2</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '4.1.3')" data-input-text="">4.1.3</td>
+                    <td onclick="openModal(this, '4.2.3')" data-input-text="">4.2.3</td>
+                    <td onclick="openModal(this, '4.3.3')" data-input-text="">4.3.3</td>
+                    <td onclick="openModal(this, '4.4.3')" data-input-text="">4.4.3</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '4.1.4')" data-input-text="">4.1.4</td>
+                    <td onclick="openModal(this, '4.2.4')" data-input-text="">4.2.4</td>
+                    <td onclick="openModal(this, '4.3.4')" data-input-text="">4.3.4</td>
+                    <td onclick="openModal(this, '4.4.4')" data-input-text="">4.4.4</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '4.1.5')" data-input-text="">4.1.5</td>
+                    <td onclick="openModal(this, '4.2.5')" data-input-text="">4.2.5</td>
+                    <td onclick="openModal(this, '4.3.5')" data-input-text="">4.3.5</td>
+                    <td onclick="openModal(this, '4.4.5')" data-input-text="">4.4.5</td>
+                </tr>
+                <!-- First column with 6 rows -->
+                <tr>
+                    <td onclick="openModal(this, '4.1.6')" data-input-text="">4.1.6</td>
+                    <td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 5: 4 columns, third column with 6 rows -->
+        <table class="table">
+            <thead><tr><th colspan="4">5</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td onclick="openModal(this, '5.1.1')" data-input-text="">5.1.1</td>
+                    <td onclick="openModal(this, '5.2.1')" data-input-text="">5.2.1</td>
+                    <td onclick="openModal(this, '5.3.1')" data-input-text="">5.3.1</td>
+                    <td onclick="openModal(this, '5.4.1')" data-input-text="">5.4.1</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '5.1.2')" data-input-text="">5.1.2</td>
+                    <td onclick="openModal(this, '5.2.2')" data-input-text="">5.2.2</td>
+                    <td onclick="openModal(this, '5.3.2')" data-input-text="">5.3.2</td>
+                    <td onclick="openModal(this, '5.4.2')" data-input-text="">5.4.2</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '5.1.3')" data-input-text="">5.1.3</td>
+                    <td onclick="openModal(this, '5.2.3')" data-input-text="">5.2.3</td>
+                    <td onclick="openModal(this, '5.3.3')" data-input-text="">5.3.3</td>
+                    <td onclick="openModal(this, '5.4.3')" data-input-text="">5.4.3</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '5.1.4')" data-input-text="">5.1.4</td>
+                    <td onclick="openModal(this, '5.2.4')" data-input-text="">5.2.4</td>
+                    <td onclick="openModal(this, '5.3.4')" data-input-text="">5.3.4</td>
+                    <td onclick="openModal(this, '5.4.4')" data-input-text="">5.4.4</td>
+                </tr>
+                <tr>
+                    <td onclick="openModal(this, '5.1.5')" data-input-text="">5.1.5</td>
+                    <td onclick="openModal(this, '5.2.5')" data-input-text="">5.2.5</td>
+                    <td onclick="openModal(this, '5.3.5')" data-input-text="">5.3.5</td>
+                    <td onclick="openModal(this, '5.4.5')" data-input-text="">5.4.5</td>
+                </tr>
+                <!-- Third column with 6 rows -->
+                <tr>
+                    <td></td><td></td>
+                    <td onclick="openModal(this, '5.3.6')" data-input-text="">5.3.6</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 6: 1 column, 7 rows -->
+        <table class="table">
+            <thead><tr><th>6</th></tr></thead>
+            <tbody>
+                <tr><td onclick="openModal(this, '6.1.1')" data-input-text="">6.1.1</td></tr>
+                <tr><td onclick="openModal(this, '6.1.2')" data-input-text="">6.1.2</td></tr>
+                <tr><td onclick="openModal(this, '6.1.3')" data-input-text="">6.1.3</td></tr>
+                <tr><td onclick="openModal(this, '6.1.4')" data-input-text="">6.1.4</td></tr>
+                <tr><td onclick="openModal(this, '6.1.5')" data-input-text="">6.1.5</td></tr>
+                <tr><td onclick="openModal(this, '6.1.6')" data-input-text="">6.1.6</td></tr>
+                <tr><td onclick="openModal(this, '6.1.7')" data-input-text="">6.1.7</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Table 7: 1 column, 5 rows -->
+        <table class="table">
+            <thead><tr><th>7</th></tr></thead>
+            <tbody>
+                <tr><td onclick="openModal(this, '7.1.1')" data-input-text="">7.1.1</td></tr>
+                <tr><td onclick="openModal(this, '7.1.2')" data-input-text="">7.1.2</td></tr>
+                <tr><td onclick="openModal(this, '7.1.3')" data-input-text="">7.1.3</td></tr>
+                <tr><td onclick="openModal(this, '7.1.4')" data-input-text="">7.1.4</td></tr>
+                <tr><td onclick="openModal(this, '7.1.5')" data-input-text="">7.1.5</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <label for="cellInput">Enter text for the cell:</label>
+            <input type="text" id="cellInput" onkeydown="handleKeyDown(event)">
+            <button onclick="saveText()" style="margin-top: 10px; padding: 10px 20px;">Save</button>
+        </div>
+    </div>
+
+    <!-- Cell List -->
+    <div class="cell-list">
+        <h3>Cell Contents</h3>
+        <ul id="cellList">
+            <!-- List items will be dynamically generated here -->
+        </ul>
+    </div>
+
+    <!-- Save All Button -->
+    <button class="save-button" onclick="saveAllCells()">Save All</button>
+
+    <script>
+        let currentCell;
+        let currentCellName;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCellData();
+        });
+
+        function openModal(cell, cellName) {
+            currentCell = cell;
+            currentCellName = cellName;
+            const existingText = cell.getAttribute('data-input-text');
+            document.getElementById('cellInput').value = existingText;
+            document.getElementById('myModal').style.display = 'flex';
+
+            // Automatically focus the input field
+            document.getElementById('cellInput').focus();
+
+            // Temporarily show the input text in the modal
+            currentCell.innerText = `${cellName} ${existingText}`;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+
+            // Hide the input text when closing the modal
+            currentCell.innerText = currentCellName;
+        }
+
+        function saveText() {
+            const inputText = document.getElementById('cellInput').value.trim();
+            currentCell.setAttribute('data-input-text', inputText);
+            updateCellList(currentCellName, inputText);
+            saveCellData(currentCellName, inputText);
+            closeModal();
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                saveText();
+            }
+        }
+
+        function updateCellList(cellName, inputText) {
+            const list = document.getElementById('cellList');
+            const listItem = document.getElementById(`list-${cellName}`);
+            if (listItem) {
+                listItem.querySelector('.cell-content').innerText = inputText;
+            } else {
+                const newItem = document.createElement('li');
+                newItem.id = `list-${cellName}`;
+                newItem.innerHTML = `<span>${cellName}</span> <span class="cell-content">${inputText}</span>`;
+                list.appendChild(newItem);
+            }
+            sortCellList();
+        }
+
+        function sortCellList() {
+            const list = document.getElementById('cellList');
+            const items = Array.from(list.getElementsByTagName('li'));
+            items.sort((a, b) => {
+                const nameA = a.id.split('-')[1].split('.').map(Number);
+                const nameB = b.id.split('-')[1].split('.').map(Number);
+                for (let i = 0; i < nameA.length; i++) {
+                    if (nameA[i] !== nameB[i]) {
+                        return nameA[i] - nameB[i];
+                    }
+                }
+                return 0;
+            });
+            items.forEach(item => list.appendChild(item));
+        }
+
+        function filterList() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const listItems = document.getElementById('cellList').getElementsByTagName('li');
+            const searchResults = document.getElementById('searchResults');
+            const searchResultsList = document.getElementById('searchResultsList');
+            searchResultsList.innerHTML = '';
+
+            let resultsFound = false;
+            Array.from(listItems).forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(searchValue)) {
+                    resultsFound = true;
+                    const resultItem = document.createElement('li');
+                    resultItem.innerText = item.innerText;
+                    resultItem.onclick = () => {
+                        document.getElementById('searchInput').value = item.innerText;
+                        searchResults.style.display = 'none';
+                    };
+                    searchResultsList.appendChild(resultItem);
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            searchResults.style.display = resultsFound ? 'block' : 'none';
+        }
+
+        function hideDropdown() {
+            document.getElementById('searchResults').style.display = 'none';
+        }
+
+        function saveCellData(cellName, inputText) {
+            localStorage.setItem(cellName, inputText);
+        }
+
+        function loadCellData() {
+            const listItems = document.getElementById('cellList').getElementsByTagName('li');
+            Array.from(listItems).forEach(item => {
+                const cellName = item.id.split('-')[1];
+                const savedText = localStorage.getItem(cellName);
+                if (savedText) {
+                    item.querySelector('.cell-content').innerText = savedText;
+                    document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedText);
+                }
+            });
+        }
+
+        function saveAllCells() {
+            const listItems = document.getElementById('cellList').getElementsByTagName('li');
+            Array.from(listItems).forEach(item => {
+                const cellName = item.id.split('-')[1];
+                const inputText = item.querySelector('.cell-content').innerText;
+                localStorage.setItem(cellName, inputText);
+            });
+            alert('All cell data saved successfully!');
+        }
+    </script>
+</body>
+</html>
