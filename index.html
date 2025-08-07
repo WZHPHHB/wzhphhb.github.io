@@ -15,6 +15,15 @@
             align-items: center;
             min-height: 100vh;
         }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-shadow: -1px -1px 0 #fff412, 1px -1px 0 #fff412, -1px 1px 0 #fff412, 1px 1px 0 #fff412; /* Yellow outline */
+        }
         .search-bar {
             margin-bottom: 20px;
             width: 100%;
@@ -175,6 +184,9 @@
     </style>
 </head>
 <body>
+    <!-- Site Header -->
+    <div class="header">INVENTORY DASHBOARD</div>
+
     <!-- Search Bar -->
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Search..." oninput="filterList()" onblur="hideDropdown()">
