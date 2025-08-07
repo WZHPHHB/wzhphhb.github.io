@@ -580,5 +580,51 @@
             alert('All cell data saved successfully!');
         }
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  // Initialize Supabase
+  const { createClient } = supabase;
+  const supabaseUrl = 'https://rctbrwsyduxrqlzhmvik.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjdGJyd3N5ZHV4cnFsemhtdmlrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ1NjU2NzYsImV4cCI6MjA3MDE0MTY3Nn0.F5oEkbskSYGiucRF-erpI3tg1oo3u_u1uxVJXkWV1Y0';
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
+  // Example function to interact with Supabase
+  async function saveCellData(cellName, inputText) {
+    const { data, error } = await supabase
+      .from('cell_data')
+      .upsert([{ cell_name: cellName, input_text: inputText }]);
+
+    if (error) {
+      console.error('Error saving data:', error);
+    }
+  }
+
+  async function loadCellData() {
+    const { data, error } = await supabase
+      .from('cell_data')
+      .select('*');
+
+    if (error) {
+      console.error('Error loading data:', error);
+      return;
+    }
+
+    const listItems = document.getElementById('cellList').getElementsByTagName('li');
+    Array.from(listItems).forEach(item => {
+      const cellName = item.id.split('-')[1];
+      const savedData = data.find(row => row.cell_name === cellName);
+      if (savedData) {
+        item.querySelector('.cell-content').innerText = savedData.input_text;
+        document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
+      }
+    });
+  }
+
+  // Load cell data when the page is loaded
+  document.addEventListener('DOMContentLoaded', loadCellData);
+</script>
+
 </body>
 </html>
