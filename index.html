@@ -592,34 +592,34 @@
 
   // Example function to interact with Supabase
   async function saveCellData(cellName, inputText) {
-    const { data, error } = await supabase
-      .from('cell_data')
-      .upsert([{ cell_name: cellName, input_text: inputText }]);
+  const { data, error } = await supabase
+    .from('cell_data')
+    .upsert([{ cell_name: cellName, input_text: inputText }]);
 
-    if (error) {
-      console.error('Error saving data:', error);
-    }
+  if (error) {
+    console.error('Error saving data:', error);
+  }
+}
+
+async function loadCellData() {
+  const { data, error } = await supabase
+    .from('cell_data')
+    .select('*');
+
+  if (error) {
+    console.error('Error loading data:', error);
+    return;
   }
 
-  async function loadCellData() {
-    const { data, error } = await supabase
-      .from('cell_data')
-      .select('*');
-
-    if (error) {
-      console.error('Error loading data:', error);
-      return;
+  const listItems = document.getElementById('cellList').getElementsByTagName('li');
+  Array.from(listItems).forEach(item => {
+    const cellName = item.id.split('-')[1];
+    const savedData = data.find(row => row.cell_name === cellName);
+    if (savedData) {
+      item.querySelector('.cell-content').innerText = savedData.input_text;
+      document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
     }
-
-    const listItems = document.getElementById('cellList').getElementsByTagName('li');
-    Array.from(listItems).forEach(item => {
-      const cellName = item.id.split('-')[1];
-      const savedData = data.find(row => row.cell_name === cellName);
-      if (savedData) {
-        item.querySelector('.cell-content').innerText = savedData.input_text;
-        document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
-      }
-    });
+  });
   }
 
   // Load cell data when the page is loaded
