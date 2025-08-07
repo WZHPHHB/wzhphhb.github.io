@@ -138,11 +138,6 @@
             text-decoration: none;
             cursor: pointer;
         }
-        #cellInput {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-top: 10px;
-        }
         .cell-list {
             margin-top: 30px;
             width: 100%;
@@ -168,19 +163,6 @@
         .cell-list li:last-child {
             border-bottom: none;
         }
-        .save-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .save-button:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
@@ -204,40 +186,40 @@
             <tbody>
                 <!-- First 2 columns with 5 rows -->
                 <tr>
-                    <td onclick="openModal(this, '1.1.1')" data-input-text="">1.1.1</td>
-                    <td onclick="openModal(this, '1.2.1')" data-input-text="">1.2.1</td>
-                    <td onclick="openModal(this, '1.3.1')" data-input-text="">1.3.1</td>
-                    <td onclick="openModal(this, '1.4.1')" data-input-text="">1.4.1</td>
+                    <td onclick="openModal(this, '1.1.1')">1.1.1</td>
+                    <td onclick="openModal(this, '1.2.1')">1.2.1</td>
+                    <td onclick="openModal(this, '1.3.1')">1.3.1</td>
+                    <td onclick="openModal(this, '1.4.1')">1.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.2')" data-input-text="">1.1.2</td>
-                    <td onclick="openModal(this, '1.2.2')" data-input-text="">1.2.2</td>
-                    <td onclick="openModal(this, '1.3.2')" data-input-text="">1.3.2</td>
-                    <td onclick="openModal(this, '1.4.2')" data-input-text="">1.4.2</td>
+                    <td onclick="openModal(this, '1.1.2')">1.1.2</td>
+                    <td onclick="openModal(this, '1.2.2')">1.2.2</td>
+                    <td onclick="openModal(this, '1.3.2')">1.3.2</td>
+                    <td onclick="openModal(this, '1.4.2')">1.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.3')" data-input-text="">1.1.3</td>
-                    <td onclick="openModal(this, '1.2.3')" data-input-text="">1.2.3</td>
-                    <td onclick="openModal(this, '1.3.3')" data-input-text="">1.3.3</td>
-                    <td onclick="openModal(this, '1.4.3')" data-input-text="">1.4.3</td>
+                    <td onclick="openModal(this, '1.1.3')">1.1.3</td>
+                    <td onclick="openModal(this, '1.2.3')">1.2.3</td>
+                    <td onclick="openModal(this, '1.3.3')">1.3.3</td>
+                    <td onclick="openModal(this, '1.4.3')">1.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.4')" data-input-text="">1.1.4</td>
-                    <td onclick="openModal(this, '1.2.4')" data-input-text="">1.2.4</td>
-                    <td onclick="openModal(this, '1.3.4')" data-input-text="">1.3.4</td>
-                    <td onclick="openModal(this, '1.4.4')" data-input-text="">1.4.4</td>
+                    <td onclick="openModal(this, '1.1.4')">1.1.4</td>
+                    <td onclick="openModal(this, '1.2.4')">1.2.4</td>
+                    <td onclick="openModal(this, '1.3.4')">1.3.4</td>
+                    <td onclick="openModal(this, '1.4.4')">1.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.5')" data-input-text="">1.1.5</td>
-                    <td onclick="openModal(this, '1.2.5')" data-input-text="">1.2.5</td>
-                    <td onclick="openModal(this, '1.3.5')" data-input-text="">1.3.5</td>
-                    <td onclick="openModal(this, '1.4.5')" data-input-text="">1.4.5</td>
+                    <td onclick="openModal(this, '1.1.5')">1.1.5</td>
+                    <td onclick="openModal(this, '1.2.5')">1.2.5</td>
+                    <td onclick="openModal(this, '1.3.5')">1.3.5</td>
+                    <td onclick="openModal(this, '1.4.5')">1.4.5</td>
                 </tr>
                 <!-- Last 2 columns with 6 rows -->
                 <tr>
                     <td></td><td></td>
-                    <td onclick="openModal(this, '1.3.6')" data-input-text="">1.3.6</td>
-                    <td onclick="openModal(this, '1.4.6')" data-input-text="">1.4.6</td>
+                    <td onclick="openModal(this, '1.3.6')">1.3.6</td>
+                    <td onclick="openModal(this, '1.4.6')">1.4.6</td>
                 </tr>
             </tbody>
         </table>
@@ -247,34 +229,34 @@
             <thead><tr><th colspan="4">2</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '2.1.1')" data-input-text="">2.1.1</td>
-                    <td onclick="openModal(this, '2.2.1')" data-input-text="">2.2.1</td>
-                    <td onclick="openModal(this, '2.3.1')" data-input-text="">2.3.1</td>
-                    <td onclick="openModal(this, '2.4.1')" data-input-text="">2.4.1</td>
+                    <td onclick="openModal(this, '2.1.1')">2.1.1</td>
+                    <td onclick="openModal(this, '2.2.1')">2.2.1</td>
+                    <td onclick="openModal(this, '2.3.1')">2.3.1</td>
+                    <td onclick="openModal(this, '2.4.1')">2.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.2')" data-input-text="">2.1.2</td>
-                    <td onclick="openModal(this, '2.2.2')" data-input-text="">2.2.2</td>
-                    <td onclick="openModal(this, '2.3.2')" data-input-text="">2.3.2</td>
-                    <td onclick="openModal(this, '2.4.2')" data-input-text="">2.4.2</td>
+                    <td onclick="openModal(this, '2.1.2')">2.1.2</td>
+                    <td onclick="openModal(this, '2.2.2')">2.2.2</td>
+                    <td onclick="openModal(this, '2.3.2')">2.3.2</td>
+                    <td onclick="openModal(this, '2.4.2')">2.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.3')" data-input-text="">2.1.3</td>
-                    <td onclick="openModal(this, '2.2.3')" data-input-text="">2.2.3</td>
-                    <td onclick="openModal(this, '2.3.3')" data-input-text="">2.3.3</td>
-                    <td onclick="openModal(this, '2.4.3')" data-input-text="">2.4.3</td>
+                    <td onclick="openModal(this, '2.1.3')">2.1.3</td>
+                    <td onclick="openModal(this, '2.2.3')">2.2.3</td>
+                    <td onclick="openModal(this, '2.3.3')">2.3.3</td>
+                    <td onclick="openModal(this, '2.4.3')">2.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.4')" data-input-text="">2.1.4</td>
-                    <td onclick="openModal(this, '2.2.4')" data-input-text="">2.2.4</td>
-                    <td onclick="openModal(this, '2.3.4')" data-input-text="">2.3.4</td>
-                    <td onclick="openModal(this, '2.4.4')" data-input-text="">2.4.4</td>
+                    <td onclick="openModal(this, '2.1.4')">2.1.4</td>
+                    <td onclick="openModal(this, '2.2.4')">2.2.4</td>
+                    <td onclick="openModal(this, '2.3.4')">2.3.4</td>
+                    <td onclick="openModal(this, '2.4.4')">2.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.5')" data-input-text="">2.1.5</td>
-                    <td onclick="openModal(this, '2.2.5')" data-input-text="">2.2.5</td>
-                    <td onclick="openModal(this, '2.3.5')" data-input-text="">2.3.5</td>
-                    <td onclick="openModal(this, '2.4.5')" data-input-text="">2.4.5</td>
+                    <td onclick="openModal(this, '2.1.5')">2.1.5</td>
+                    <td onclick="openModal(this, '2.2.5')">2.2.5</td>
+                    <td onclick="openModal(this, '2.3.5')">2.3.5</td>
+                    <td onclick="openModal(this, '2.4.5')">2.4.5</td>
                 </tr>
             </tbody>
         </table>
@@ -284,34 +266,34 @@
             <thead><tr><th colspan="4">3</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '3.1.1')" data-input-text="">3.1.1</td>
-                    <td onclick="openModal(this, '3.2.1')" data-input-text="">3.2.1</td>
-                    <td onclick="openModal(this, '3.3.1')" data-input-text="">3.3.1</td>
-                    <td onclick="openModal(this, '3.4.1')" data-input-text="">3.4.1</td>
+                    <td onclick="openModal(this, '3.1.1')">3.1.1</td>
+                    <td onclick="openModal(this, '3.2.1')">3.2.1</td>
+                    <td onclick="openModal(this, '3.3.1')">3.3.1</td>
+                    <td onclick="openModal(this, '3.4.1')">3.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.2')" data-input-text="">3.1.2</td>
-                    <td onclick="openModal(this, '3.2.2')" data-input-text="">3.2.2</td>
-                    <td onclick="openModal(this, '3.3.2')" data-input-text="">3.3.2</td>
-                    <td onclick="openModal(this, '3.4.2')" data-input-text="">3.4.2</td>
+                    <td onclick="openModal(this, '3.1.2')">3.1.2</td>
+                    <td onclick="openModal(this, '3.2.2')">3.2.2</td>
+                    <td onclick="openModal(this, '3.3.2')">3.3.2</td>
+                    <td onclick="openModal(this, '3.4.2')">3.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.3')" data-input-text="">3.1.3</td>
-                    <td onclick="openModal(this, '3.2.3')" data-input-text="">3.2.3</td>
-                    <td onclick="openModal(this, '3.3.3')" data-input-text="">3.3.3</td>
-                    <td onclick="openModal(this, '3.4.3')" data-input-text="">3.4.3</td>
+                    <td onclick="openModal(this, '3.1.3')">3.1.3</td>
+                    <td onclick="openModal(this, '3.2.3')">3.2.3</td>
+                    <td onclick="openModal(this, '3.3.3')">3.3.3</td>
+                    <td onclick="openModal(this, '3.4.3')">3.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.4')" data-input-text="">3.1.4</td>
-                    <td onclick="openModal(this, '3.2.4')" data-input-text="">3.2.4</td>
-                    <td onclick="openModal(this, '3.3.4')" data-input-text="">3.3.4</td>
-                    <td onclick="openModal(this, '3.4.4')" data-input-text="">3.4.4</td>
+                    <td onclick="openModal(this, '3.1.4')">3.1.4</td>
+                    <td onclick="openModal(this, '3.2.4')">3.2.4</td>
+                    <td onclick="openModal(this, '3.3.4')">3.3.4</td>
+                    <td onclick="openModal(this, '3.4.4')">3.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.5')" data-input-text="">3.1.5</td>
-                    <td onclick="openModal(this, '3.2.5')" data-input-text="">3.2.5</td>
-                    <td onclick="openModal(this, '3.3.5')" data-input-text="">3.3.5</td>
-                    <td onclick="openModal(this, '3.4.5')" data-input-text="">3.4.5</td>
+                    <td onclick="openModal(this, '3.1.5')">3.1.5</td>
+                    <td onclick="openModal(this, '3.2.5')">3.2.5</td>
+                    <td onclick="openModal(this, '3.3.5')">3.3.5</td>
+                    <td onclick="openModal(this, '3.4.5')">3.4.5</td>
                 </tr>
             </tbody>
         </table>
@@ -321,38 +303,38 @@
             <thead><tr><th colspan="4">4</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '4.1.1')" data-input-text="">4.1.1</td>
-                    <td onclick="openModal(this, '4.2.1')" data-input-text="">4.2.1</td>
-                    <td onclick="openModal(this, '4.3.1')" data-input-text="">4.3.1</td>
-                    <td onclick="openModal(this, '4.4.1')" data-input-text="">4.4.1</td>
+                    <td onclick="openModal(this, '4.1.1')">4.1.1</td>
+                    <td onclick="openModal(this, '4.2.1')">4.2.1</td>
+                    <td onclick="openModal(this, '4.3.1')">4.3.1</td>
+                    <td onclick="openModal(this, '4.4.1')">4.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.2')" data-input-text="">4.1.2</td>
-                    <td onclick="openModal(this, '4.2.2')" data-input-text="">4.2.2</td>
-                    <td onclick="openModal(this, '4.3.2')" data-input-text="">4.3.2</td>
-                    <td onclick="openModal(this, '4.4.2')" data-input-text="">4.4.2</td>
+                    <td onclick="openModal(this, '4.1.2')">4.1.2</td>
+                    <td onclick="openModal(this, '4.2.2')">4.2.2</td>
+                    <td onclick="openModal(this, '4.3.2')">4.3.2</td>
+                    <td onclick="openModal(this, '4.4.2')">4.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.3')" data-input-text="">4.1.3</td>
-                    <td onclick="openModal(this, '4.2.3')" data-input-text="">4.2.3</td>
-                    <td onclick="openModal(this, '4.3.3')" data-input-text="">4.3.3</td>
-                    <td onclick="openModal(this, '4.4.3')" data-input-text="">4.4.3</td>
+                    <td onclick="openModal(this, '4.1.3')">4.1.3</td>
+                    <td onclick="openModal(this, '4.2.3')">4.2.3</td>
+                    <td onclick="openModal(this, '4.3.3')">4.3.3</td>
+                    <td onclick="openModal(this, '4.4.3')">4.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.4')" data-input-text="">4.1.4</td>
-                    <td onclick="openModal(this, '4.2.4')" data-input-text="">4.2.4</td>
-                    <td onclick="openModal(this, '4.3.4')" data-input-text="">4.3.4</td>
-                    <td onclick="openModal(this, '4.4.4')" data-input-text="">4.4.4</td>
+                    <td onclick="openModal(this, '4.1.4')">4.1.4</td>
+                    <td onclick="openModal(this, '4.2.4')">4.2.4</td>
+                    <td onclick="openModal(this, '4.3.4')">4.3.4</td>
+                    <td onclick="openModal(this, '4.4.4')">4.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.5')" data-input-text="">4.1.5</td>
-                    <td onclick="openModal(this, '4.2.5')" data-input-text="">4.2.5</td>
-                    <td onclick="openModal(this, '4.3.5')" data-input-text="">4.3.5</td>
-                    <td onclick="openModal(this, '4.4.5')" data-input-text="">4.4.5</td>
+                    <td onclick="openModal(this, '4.1.5')">4.1.5</td>
+                    <td onclick="openModal(this, '4.2.5')">4.2.5</td>
+                    <td onclick="openModal(this, '4.3.5')">4.3.5</td>
+                    <td onclick="openModal(this, '4.4.5')">4.4.5</td>
                 </tr>
                 <!-- First column with 6 rows -->
                 <tr>
-                    <td onclick="openModal(this, '4.1.6')" data-input-text="">4.1.6</td>
+                    <td onclick="openModal(this, '4.1.6')">4.1.6</td>
                     <td></td><td></td><td></td>
                 </tr>
             </tbody>
@@ -363,39 +345,39 @@
             <thead><tr><th colspan="4">5</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '5.1.1')" data-input-text="">5.1.1</td>
-                    <td onclick="openModal(this, '5.2.1')" data-input-text="">5.2.1</td>
-                    <td onclick="openModal(this, '5.3.1')" data-input-text="">5.3.1</td>
-                    <td onclick="openModal(this, '5.4.1')" data-input-text="">5.4.1</td>
+                    <td onclick="openModal(this, '5.1.1')">5.1.1</td>
+                    <td onclick="openModal(this, '5.2.1')">5.2.1</td>
+                    <td onclick="openModal(this, '5.3.1')">5.3.1</td>
+                    <td onclick="openModal(this, '5.4.1')">5.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.2')" data-input-text="">5.1.2</td>
-                    <td onclick="openModal(this, '5.2.2')" data-input-text="">5.2.2</td>
-                    <td onclick="openModal(this, '5.3.2')" data-input-text="">5.3.2</td>
-                    <td onclick="openModal(this, '5.4.2')" data-input-text="">5.4.2</td>
+                    <td onclick="openModal(this, '5.1.2')">5.1.2</td>
+                    <td onclick="openModal(this, '5.2.2')">5.2.2</td>
+                    <td onclick="openModal(this, '5.3.2')">5.3.2</td>
+                    <td onclick="openModal(this, '5.4.2')">5.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.3')" data-input-text="">5.1.3</td>
-                    <td onclick="openModal(this, '5.2.3')" data-input-text="">5.2.3</td>
-                    <td onclick="openModal(this, '5.3.3')" data-input-text="">5.3.3</td>
-                    <td onclick="openModal(this, '5.4.3')" data-input-text="">5.4.3</td>
+                    <td onclick="openModal(this, '5.1.3')">5.1.3</td>
+                    <td onclick="openModal(this, '5.2.3')">5.2.3</td>
+                    <td onclick="openModal(this, '5.3.3')">5.3.3</td>
+                    <td onclick="openModal(this, '5.4.3')">5.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.4')" data-input-text="">5.1.4</td>
-                    <td onclick="openModal(this, '5.2.4')" data-input-text="">5.2.4</td>
-                    <td onclick="openModal(this, '5.3.4')" data-input-text="">5.3.4</td>
-                    <td onclick="openModal(this, '5.4.4')" data-input-text="">5.4.4</td>
+                    <td onclick="openModal(this, '5.1.4')">5.1.4</td>
+                    <td onclick="openModal(this, '5.2.4')">5.2.4</td>
+                    <td onclick="openModal(this, '5.3.4')">5.3.4</td>
+                    <td onclick="openModal(this, '5.4.4')">5.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.5')" data-input-text="">5.1.5</td>
-                    <td onclick="openModal(this, '5.2.5')" data-input-text="">5.2.5</td>
-                    <td onclick="openModal(this, '5.3.5')" data-input-text="">5.3.5</td>
-                    <td onclick="openModal(this, '5.4.5')" data-input-text="">5.4.5</td>
+                    <td onclick="openModal(this, '5.1.5')">5.1.5</td>
+                    <td onclick="openModal(this, '5.2.5')">5.2.5</td>
+                    <td onclick="openModal(this, '5.3.5')">5.3.5</td>
+                    <td onclick="openModal(this, '5.4.5')">5.4.5</td>
                 </tr>
                 <!-- Third column with 6 rows -->
                 <tr>
                     <td></td><td></td>
-                    <td onclick="openModal(this, '5.3.6')" data-input-text="">5.3.6</td>
+                    <td onclick="openModal(this, '5.3.6')">5.3.6</td>
                     <td></td>
                 </tr>
             </tbody>
@@ -405,13 +387,13 @@
         <table class="table">
             <thead><tr><th>6</th></tr></thead>
             <tbody>
-                <tr><td onclick="openModal(this, '6.1.1')" data-input-text="">6.1.1</td></tr>
-                <tr><td onclick="openModal(this, '6.1.2')" data-input-text="">6.1.2</td></tr>
-                <tr><td onclick="openModal(this, '6.1.3')" data-input-text="">6.1.3</td></tr>
-                <tr><td onclick="openModal(this, '6.1.4')" data-input-text="">6.1.4</td></tr>
-                <tr><td onclick="openModal(this, '6.1.5')" data-input-text="">6.1.5</td></tr>
-                <tr><td onclick="openModal(this, '6.1.6')" data-input-text="">6.1.6</td></tr>
-                <tr><td onclick="openModal(this, '6.1.7')" data-input-text="">6.1.7</td></tr>
+                <tr><td onclick="openModal(this, '6.1.1')">6.1.1</td></tr>
+                <tr><td onclick="openModal(this, '6.1.2')">6.1.2</td></tr>
+                <tr><td onclick="openModal(this, '6.1.3')">6.1.3</td></tr>
+                <tr><td onclick="openModal(this, '6.1.4')">6.1.4</td></tr>
+                <tr><td onclick="openModal(this, '6.1.5')">6.1.5</td></tr>
+                <tr><td onclick="openModal(this, '6.1.6')">6.1.6</td></tr>
+                <tr><td onclick="openModal(this, '6.1.7')">6.1.7</td></tr>
             </tbody>
         </table>
 
@@ -419,11 +401,11 @@
         <table class="table">
             <thead><tr><th>7</th></tr></thead>
             <tbody>
-                <tr><td onclick="openModal(this, '7.1.1')" data-input-text="">7.1.1</td></tr>
-                <tr><td onclick="openModal(this, '7.1.2')" data-input-text="">7.1.2</td></tr>
-                <tr><td onclick="openModal(this, '7.1.3')" data-input-text="">7.1.3</td></tr>
-                <tr><td onclick="openModal(this, '7.1.4')" data-input-text="">7.1.4</td></tr>
-                <tr><td onclick="openModal(this, '7.1.5')" data-input-text="">7.1.5</td></tr>
+                <tr><td onclick="openModal(this, '7.1.1')">7.1.1</td></tr>
+                <tr><td onclick="openModal(this, '7.1.2')">7.1.2</td></tr>
+                <tr><td onclick="openModal(this, '7.1.3')">7.1.3</td></tr>
+                <tr><td onclick="openModal(this, '7.1.4')">7.1.4</td></tr>
+                <tr><td onclick="openModal(this, '7.1.5')">7.1.5</td></tr>
             </tbody>
         </table>
     </div>
@@ -432,132 +414,32 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <label for="cellInput">Enter text for the cell:</label>
-            <input type="text" id="cellInput" onkeydown="handleKeyDown(event)">
-            <button onclick="saveText()" style="margin-top: 10px; padding: 10px 20px;">Save</button>
+            <p id="cellContent"></p>
         </div>
     </div>
 
     <!-- Cell List -->
     <div class="cell-list">
-        <h3>Cell Contents</h3>
+        <h3>Inventory</h3>
         <ul id="cellList">
             <!-- List items will be dynamically generated here -->
         </ul>
     </div>
 
-    <!-- Save All Button -->
-    <button class="save-button" onclick="saveAllCells()">Save All</button>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
     <script>
-        // Initialize Supabase
-        const supabaseUrl = 'https://rctbrwsyduxrqlzhmvik.supabase.co';
-        const supabaseKey = 'sb_publishable_zMY6_eSxwHZTFLWFMT8UbA_TKXqPYjW';
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
         let currentCell;
         let currentCellName;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            loadCellData();
-        });
-
-        async function saveCellData(cellName, inputText) {
-            console.log('Saving:', cellName, inputText); // Debugging line
-            const { data, error } = await supabase
-                .from('cell_data')
-                .upsert([{ cell_name: cellName, input_text: inputText }]);
-
-            if (error) {
-                console.error('Error saving data:', error);
-            } else {
-                console.log('Data saved:', data);
-            }
-        }
-
-        async function loadCellData() {
-            const { data, error } = await supabase
-                .from('cell_data')
-                .select('*');
-
-            if (error) {
-                console.error('Error loading data:', error);
-                return;
-            }
-
-            console.log('Loaded data:', data); // Debugging line
-
-            const listItems = document.getElementById('cellList').getElementsByTagName('li');
-            Array.from(listItems).forEach(item => {
-                const cellName = item.id.split('-')[1];
-                const savedData = data.find(row => row.cell_name === cellName);
-                if (savedData) {
-                    item.querySelector('.cell-content').innerText = savedData.input_text;
-                    document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
-                }
-            });
-        }
 
         function openModal(cell, cellName) {
             currentCell = cell;
             currentCellName = cellName;
-            const existingText = cell.getAttribute('data-input-text');
-            document.getElementById('cellInput').value = existingText;
+            const existingText = cell.innerText;
+            document.getElementById('cellContent').innerText = existingText;
             document.getElementById('myModal').style.display = 'flex';
-
-            document.getElementById('cellInput').focus();
-            currentCell.innerText = `${cellName} ${existingText}`;
         }
 
         function closeModal() {
             document.getElementById('myModal').style.display = 'none';
-            currentCell.innerText = currentCellName;
-        }
-
-        function saveText() {
-            const inputText = document.getElementById('cellInput').value.trim();
-            currentCell.setAttribute('data-input-text', inputText);
-            updateCellList(currentCellName, inputText);
-            saveCellData(currentCellName, inputText);
-            closeModal();
-        }
-
-        function handleKeyDown(event) {
-            if (event.key === 'Enter') {
-                saveText();
-            }
-        }
-
-        function updateCellList(cellName, inputText) {
-            const list = document.getElementById('cellList');
-            const listItem = document.getElementById(`list-${cellName}`);
-            if (listItem) {
-                listItem.querySelector('.cell-content').innerText = inputText;
-            } else {
-                const newItem = document.createElement('li');
-                newItem.id = `list-${cellName}`;
-                newItem.innerHTML = `<span>${cellName}</span> <span class="cell-content">${inputText}</span>`;
-                list.appendChild(newItem);
-            }
-            sortCellList();
-        }
-
-        function sortCellList() {
-            const list = document.getElementById('cellList');
-            const items = Array.from(list.getElementsByTagName('li'));
-            items.sort((a, b) => {
-                const nameA = a.id.split('-')[1].split('.').map(Number);
-                const nameB = b.id.split('-')[1].split('.').map(Number);
-                for (let i = 0; i < nameA.length; i++) {
-                    if (nameA[i] !== nameB[i]) {
-                        return nameA[i] - nameB[i];
-                    }
-                }
-                return 0;
-            });
-            items.forEach(item => list.appendChild(item));
         }
 
         function filterList() {
