@@ -554,22 +554,6 @@
             document.getElementById('searchResults').style.display = 'none';
         }
 
-        function saveCellData(cellName, inputText) {
-            localStorage.setItem(cellName, inputText);
-        }
-
-        function loadCellData() {
-            const listItems = document.getElementById('cellList').getElementsByTagName('li');
-            Array.from(listItems).forEach(item => {
-                const cellName = item.id.split('-')[1];
-                const savedText = localStorage.getItem(cellName);
-                if (savedText) {
-                    item.querySelector('.cell-content').innerText = savedText;
-                    document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedText);
-                }
-            });
-        }
-
         function saveAllCells() {
             const listItems = document.getElementById('cellList').getElementsByTagName('li');
             Array.from(listItems).forEach(item => {
