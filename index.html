@@ -449,13 +449,57 @@
     <!-- Save All Button -->
     <button class="save-button" onclick="saveAllCells()">Save All</button>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
     <script>
+        // Initialize Supabase
+        const { createClient } = supabase;
+        const supabaseUrl = 'https://rctbrwsyduxrqlzhmvik.supabase.co';
+        const supabaseKey = 'sb_publishable_zMY6_eSxwHZTFLWFMT8UbA_TKXqPYjW';
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
         let currentCell;
         let currentCellName;
 
         document.addEventListener('DOMContentLoaded', () => {
             loadCellData();
         });
+
+        async function saveCellData(cellName, inputText) {
+            console.log('Saving:', cellName, inputText); // Debugging line
+            const { data, error } = await supabase
+                .from('cell_data')
+                .upsert([{ cell_name: cellName, input_text: inputText }]);
+
+            if (error) {
+                console.error('Error saving data:', error);
+            } else {
+                console.log('Data saved:', data);
+            }
+        }
+
+        async function loadCellData() {
+            const { data, error } = await supabase
+                .from('cell_data')
+                .select('*');
+
+            if (error) {
+                console.error('Error loading data:', error);
+                return;
+            }
+
+            console.log('Loaded data:', data); // Debugging line
+
+            const listItems = document.getElementById('cellList').getElementsByTagName('li');
+            Array.from(listItems).forEach(item => {
+                const cellName = item.id.split('-')[1];
+                const savedData = data.find(row => row.cell_name === cellName);
+                if (savedData) {
+                    item.querySelector('.cell-content').innerText = savedData.input_text;
+                    document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
+                }
+            });
+        }
 
         function openModal(cell, cellName) {
             currentCell = cell;
@@ -464,17 +508,12 @@
             document.getElementById('cellInput').value = existingText;
             document.getElementById('myModal').style.display = 'flex';
 
-            // Automatically focus the input field
             document.getElementById('cellInput').focus();
-
-            // Temporarily show the input text in the modal
             currentCell.innerText = `${cellName} ${existingText}`;
         }
 
         function closeModal() {
             document.getElementById('myModal').style.display = 'none';
-
-            // Hide the input text when closing the modal
             currentCell.innerText = currentCellName;
         }
 
@@ -553,62 +592,7 @@
         function hideDropdown() {
             document.getElementById('searchResults').style.display = 'none';
         }
-
-        function saveAllCells() {
-            const listItems = document.getElementById('cellList').getElementsByTagName('li');
-            Array.from(listItems).forEach(item => {
-                const cellName = item.id.split('-')[1];
-                const inputText = item.querySelector('.cell-content').innerText;
-                localStorage.setItem(cellName, inputText);
-            });
-            alert('All cell data saved successfully!');
-        }
     </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<script>
-  // Initialize Supabase
-  const { createClient } = supabase;
-  const supabaseUrl = 'https://rctbrwsyduxrqlzhmvik.supabase.co';
-  const supabaseKey = 'sb_publishable_zMY6_eSxwHZTFLWFMT8UbA_TKXqPYjW';
-  const supabase = createClient(supabaseUrl, supabaseKey);
-
-  // Example function to interact with Supabase
-  async function saveCellData(cellName, inputText) {
-  const { data, error } = await supabase
-    .from('cell_data')
-    .upsert([{ cell_name: cellName, input_text: inputText }]);
-
-  if (error) {
-    console.error('Error saving data:', error);
-  }
-}
-
-async function loadCellData() {
-  const { data, error } = await supabase
-    .from('cell_data')
-    .select('*');
-
-  if (error) {
-    console.error('Error loading data:', error);
-    return;
-  }
-
-  const listItems = document.getElementById('cellList').getElementsByTagName('li');
-  Array.from(listItems).forEach(item => {
-    const cellName = item.id.split('-')[1];
-    const savedData = data.find(row => row.cell_name === cellName);
-    if (savedData) {
-      item.querySelector('.cell-content').innerText = savedData.input_text;
-      document.querySelector(`td[data-input-text][onclick*="${cellName}"]`).setAttribute('data-input-text', savedData.input_text);
-    }
-  });
-  }
-
-  // Load cell data when the page is loaded
-  document.addEventListener('DOMContentLoaded', loadCellData);
-</script>
 
 </body>
 </html>
