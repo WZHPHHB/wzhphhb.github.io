@@ -71,7 +71,8 @@
         }
         .table {
             border-collapse: collapse;
-            width: 250px;
+            width: 100%;
+            max-width: 250px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: white;
             border-radius: 8px;
@@ -163,7 +164,7 @@
         .cell-list li:last-child {
             border-bottom: none;
         }
-        
+
         /* Responsive styles */
         @media (max-width: 768px) {
             .dashboard {
@@ -172,6 +173,18 @@
             }
             .table {
                 width: 90%;
+            }
+            .table th, .table td {
+                padding: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                font-size: 20px;
+            }
+            .table th, .table td {
+                padding: 8px;
+                font-size: 14px;
             }
         }
     </style>
