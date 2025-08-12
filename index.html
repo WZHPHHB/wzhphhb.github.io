@@ -165,7 +165,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="populateCellList()">
     <!-- Site Header -->
     <div class="header">INVENTORY DASHBOARD</div>
 
@@ -186,40 +186,40 @@
             <tbody>
                 <!-- First 2 columns with 5 rows -->
                 <tr>
-                    <td onclick="openModal(this, '1.1.1')">1.1.1</td>
-                    <td onclick="openModal(this, '1.2.1')">1.2.1</td>
-                    <td onclick="openModal(this, '1.3.1')">1.3.1</td>
-                    <td onclick="openModal(this, '1.4.1')">1.4.1</td>
+                    <td onclick="openModal(this, '1.1.1')" data-content="Detailed info about Product A">1.1.1</td>
+                    <td onclick="openModal(this, '1.2.1')" data-content="Detailed info about Product B">1.2.1</td>
+                    <td onclick="openModal(this, '1.3.1')" data-content="Detailed info about Product C">1.3.1</td>
+                    <td onclick="openModal(this, '1.4.1')" data-content="Detailed info about Product D">1.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.2')">1.1.2</td>
-                    <td onclick="openModal(this, '1.2.2')">1.2.2</td>
-                    <td onclick="openModal(this, '1.3.2')">1.3.2</td>
-                    <td onclick="openModal(this, '1.4.2')">1.4.2</td>
+                    <td onclick="openModal(this, '1.1.2')" data-content="Detailed info about Product E">1.1.2</td>
+                    <td onclick="openModal(this, '1.2.2')" data-content="Detailed info about Product F">1.2.2</td>
+                    <td onclick="openModal(this, '1.3.2')" data-content="Detailed info about Product G">1.3.2</td>
+                    <td onclick="openModal(this, '1.4.2')" data-content="Detailed info about Product H">1.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.3')">1.1.3</td>
-                    <td onclick="openModal(this, '1.2.3')">1.2.3</td>
-                    <td onclick="openModal(this, '1.3.3')">1.3.3</td>
-                    <td onclick="openModal(this, '1.4.3')">1.4.3</td>
+                    <td onclick="openModal(this, '1.1.3')" data-content="Detailed info about Product I">1.1.3</td>
+                    <td onclick="openModal(this, '1.2.3')" data-content="Detailed info about Product J">1.2.3</td>
+                    <td onclick="openModal(this, '1.3.3')" data-content="Detailed info about Product K">1.3.3</td>
+                    <td onclick="openModal(this, '1.4.3')" data-content="Detailed info about Product L">1.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.4')">1.1.4</td>
-                    <td onclick="openModal(this, '1.2.4')">1.2.4</td>
-                    <td onclick="openModal(this, '1.3.4')">1.3.4</td>
-                    <td onclick="openModal(this, '1.4.4')">1.4.4</td>
+                    <td onclick="openModal(this, '1.1.4')" data-content="Detailed info about Product M">1.1.4</td>
+                    <td onclick="openModal(this, '1.2.4')" data-content="Detailed info about Product N">1.2.4</td>
+                    <td onclick="openModal(this, '1.3.4')" data-content="Detailed info about Product O">1.3.4</td>
+                    <td onclick="openModal(this, '1.4.4')" data-content="Detailed info about Product P">1.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '1.1.5')">1.1.5</td>
-                    <td onclick="openModal(this, '1.2.5')">1.2.5</td>
-                    <td onclick="openModal(this, '1.3.5')">1.3.5</td>
-                    <td onclick="openModal(this, '1.4.5')">1.4.5</td>
+                    <td onclick="openModal(this, '1.1.5')" data-content="Detailed info about Product Q">1.1.5</td>
+                    <td onclick="openModal(this, '1.2.5')" data-content="Detailed info about Product R">1.2.5</td>
+                    <td onclick="openModal(this, '1.3.5')" data-content="Detailed info about Product S">1.3.5</td>
+                    <td onclick="openModal(this, '1.4.5')" data-content="Detailed info about Product T">1.4.5</td>
                 </tr>
                 <!-- Last 2 columns with 6 rows -->
                 <tr>
                     <td></td><td></td>
-                    <td onclick="openModal(this, '1.3.6')">1.3.6</td>
-                    <td onclick="openModal(this, '1.4.6')">1.4.6</td>
+                    <td onclick="openModal(this, '1.3.6')" data-content="Detailed info about Product U">1.3.6</td>
+                    <td onclick="openModal(this, '1.4.6')" data-content="Detailed info about Product V">1.4.6</td>
                 </tr>
             </tbody>
         </table>
@@ -229,34 +229,34 @@
             <thead><tr><th colspan="4">2</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '2.1.1')">2.1.1</td>
-                    <td onclick="openModal(this, '2.2.1')">2.2.1</td>
-                    <td onclick="openModal(this, '2.3.1')">2.3.1</td>
-                    <td onclick="openModal(this, '2.4.1')">2.4.1</td>
+                    <td onclick="openModal(this, '2.1.1')" data-content="Detailed info about Product W">2.1.1</td>
+                    <td onclick="openModal(this, '2.2.1')" data-content="Detailed info about Product X">2.2.1</td>
+                    <td onclick="openModal(this, '2.3.1')" data-content="Detailed info about Product Y">2.3.1</td>
+                    <td onclick="openModal(this, '2.4.1')" data-content="Detailed info about Product Z">2.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.2')">2.1.2</td>
-                    <td onclick="openModal(this, '2.2.2')">2.2.2</td>
-                    <td onclick="openModal(this, '2.3.2')">2.3.2</td>
-                    <td onclick="openModal(this, '2.4.2')">2.4.2</td>
+                    <td onclick="openModal(this, '2.1.2')" data-content="Detailed info about Product AA">2.1.2</td>
+                    <td onclick="openModal(this, '2.2.2')" data-content="Detailed info about Product BB">2.2.2</td>
+                    <td onclick="openModal(this, '2.3.2')" data-content="Detailed info about Product CC">2.3.2</td>
+                    <td onclick="openModal(this, '2.4.2')" data-content="Detailed info about Product DD">2.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.3')">2.1.3</td>
-                    <td onclick="openModal(this, '2.2.3')">2.2.3</td>
-                    <td onclick="openModal(this, '2.3.3')">2.3.3</td>
-                    <td onclick="openModal(this, '2.4.3')">2.4.3</td>
+                    <td onclick="openModal(this, '2.1.3')" data-content="Detailed info about Product EE">2.1.3</td>
+                    <td onclick="openModal(this, '2.2.3')" data-content="Detailed info about Product FF">2.2.3</td>
+                    <td onclick="openModal(this, '2.3.3')" data-content="Detailed info about Product GG">2.3.3</td>
+                    <td onclick="openModal(this, '2.4.3')" data-content="Detailed info about Product HH">2.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.4')">2.1.4</td>
-                    <td onclick="openModal(this, '2.2.4')">2.2.4</td>
-                    <td onclick="openModal(this, '2.3.4')">2.3.4</td>
-                    <td onclick="openModal(this, '2.4.4')">2.4.4</td>
+                    <td onclick="openModal(this, '2.1.4')" data-content="Detailed info about Product II">2.1.4</td>
+                    <td onclick="openModal(this, '2.2.4')" data-content="Detailed info about Product JJ">2.2.4</td>
+                    <td onclick="openModal(this, '2.3.4')" data-content="Detailed info about Product KK">2.3.4</td>
+                    <td onclick="openModal(this, '2.4.4')" data-content="Detailed info about Product LL">2.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '2.1.5')">2.1.5</td>
-                    <td onclick="openModal(this, '2.2.5')">2.2.5</td>
-                    <td onclick="openModal(this, '2.3.5')">2.3.5</td>
-                    <td onclick="openModal(this, '2.4.5')">2.4.5</td>
+                    <td onclick="openModal(this, '2.1.5')" data-content="Detailed info about Product MM">2.1.5</td>
+                    <td onclick="openModal(this, '2.2.5')" data-content="Detailed info about Product NN">2.2.5</td>
+                    <td onclick="openModal(this, '2.3.5')" data-content="Detailed info about Product OO">2.3.5</td>
+                    <td onclick="openModal(this, '2.4.5')" data-content="Detailed info about Product PP">2.4.5</td>
                 </tr>
             </tbody>
         </table>
@@ -266,34 +266,34 @@
             <thead><tr><th colspan="4">3</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '3.1.1')">3.1.1</td>
-                    <td onclick="openModal(this, '3.2.1')">3.2.1</td>
-                    <td onclick="openModal(this, '3.3.1')">3.3.1</td>
-                    <td onclick="openModal(this, '3.4.1')">3.4.1</td>
+                    <td onclick="openModal(this, '3.1.1')" data-content="Detailed info about Product QQ">3.1.1</td>
+                    <td onclick="openModal(this, '3.2.1')" data-content="Detailed info about Product RR">3.2.1</td>
+                    <td onclick="openModal(this, '3.3.1')" data-content="Detailed info about Product SS">3.3.1</td>
+                    <td onclick="openModal(this, '3.4.1')" data-content="Detailed info about Product TT">3.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.2')">3.1.2</td>
-                    <td onclick="openModal(this, '3.2.2')">3.2.2</td>
-                    <td onclick="openModal(this, '3.3.2')">3.3.2</td>
-                    <td onclick="openModal(this, '3.4.2')">3.4.2</td>
+                    <td onclick="openModal(this, '3.1.2')" data-content="Detailed info about Product UU">3.1.2</td>
+                    <td onclick="openModal(this, '3.2.2')" data-content="Detailed info about Product VV">3.2.2</td>
+                    <td onclick="openModal(this, '3.3.2')" data-content="Detailed info about Product WW">3.3.2</td>
+                    <td onclick="openModal(this, '3.4.2')" data-content="Detailed info about Product XX">3.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.3')">3.1.3</td>
-                    <td onclick="openModal(this, '3.2.3')">3.2.3</td>
-                    <td onclick="openModal(this, '3.3.3')">3.3.3</td>
-                    <td onclick="openModal(this, '3.4.3')">3.4.3</td>
+                    <td onclick="openModal(this, '3.1.3')" data-content="Detailed info about Product YY">3.1.3</td>
+                    <td onclick="openModal(this, '3.2.3')" data-content="Detailed info about Product ZZ">3.2.3</td>
+                    <td onclick="openModal(this, '3.3.3')" data-content="Detailed info about Product AAA">3.3.3</td>
+                    <td onclick="openModal(this, '3.4.3')" data-content="Detailed info about Product BBB">3.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.4')">3.1.4</td>
-                    <td onclick="openModal(this, '3.2.4')">3.2.4</td>
-                    <td onclick="openModal(this, '3.3.4')">3.3.4</td>
-                    <td onclick="openModal(this, '3.4.4')">3.4.4</td>
+                    <td onclick="openModal(this, '3.1.4')" data-content="Detailed info about Product CCC">3.1.4</td>
+                    <td onclick="openModal(this, '3.2.4')" data-content="Detailed info about Product DDD">3.2.4</td>
+                    <td onclick="openModal(this, '3.3.4')" data-content="Detailed info about Product EEE">3.3.4</td>
+                    <td onclick="openModal(this, '3.4.4')" data-content="Detailed info about Product FFF">3.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '3.1.5')">3.1.5</td>
-                    <td onclick="openModal(this, '3.2.5')">3.2.5</td>
-                    <td onclick="openModal(this, '3.3.5')">3.3.5</td>
-                    <td onclick="openModal(this, '3.4.5')">3.4.5</td>
+                    <td onclick="openModal(this, '3.1.5')" data-content="Detailed info about Product GGG">3.1.5</td>
+                    <td onclick="openModal(this, '3.2.5')" data-content="Detailed info about Product HHH">3.2.5</td>
+                    <td onclick="openModal(this, '3.3.5')" data-content="Detailed info about Product III">3.3.5</td>
+                    <td onclick="openModal(this, '3.4.5')" data-content="Detailed info about Product JJJ">3.4.5</td>
                 </tr>
             </tbody>
         </table>
@@ -303,38 +303,38 @@
             <thead><tr><th colspan="4">4</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '4.1.1')">4.1.1</td>
-                    <td onclick="openModal(this, '4.2.1')">4.2.1</td>
-                    <td onclick="openModal(this, '4.3.1')">4.3.1</td>
-                    <td onclick="openModal(this, '4.4.1')">4.4.1</td>
+                    <td onclick="openModal(this, '4.1.1')" data-content="Detailed info about Product KKK">4.1.1</td>
+                    <td onclick="openModal(this, '4.2.1')" data-content="Detailed info about Product LLL">4.2.1</td>
+                    <td onclick="openModal(this, '4.3.1')" data-content="Detailed info about Product MMM">4.3.1</td>
+                    <td onclick="openModal(this, '4.4.1')" data-content="Detailed info about Product NNN">4.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.2')">4.1.2</td>
-                    <td onclick="openModal(this, '4.2.2')">4.2.2</td>
-                    <td onclick="openModal(this, '4.3.2')">4.3.2</td>
-                    <td onclick="openModal(this, '4.4.2')">4.4.2</td>
+                    <td onclick="openModal(this, '4.1.2')" data-content="Detailed info about Product OOO">4.1.2</td>
+                    <td onclick="openModal(this, '4.2.2')" data-content="Detailed info about Product PPP">4.2.2</td>
+                    <td onclick="openModal(this, '4.3.2')" data-content="Detailed info about Product QQQ">4.3.2</td>
+                    <td onclick="openModal(this, '4.4.2')" data-content="Detailed info about Product RRR">4.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.3')">4.1.3</td>
-                    <td onclick="openModal(this, '4.2.3')">4.2.3</td>
-                    <td onclick="openModal(this, '4.3.3')">4.3.3</td>
-                    <td onclick="openModal(this, '4.4.3')">4.4.3</td>
+                    <td onclick="openModal(this, '4.1.3')" data-content="Detailed info about Product SSS">4.1.3</td>
+                    <td onclick="openModal(this, '4.2.3')" data-content="Detailed info about Product TTT">4.2.3</td>
+                    <td onclick="openModal(this, '4.3.3')" data-content="Detailed info about Product UUU">4.3.3</td>
+                    <td onclick="openModal(this, '4.4.3')" data-content="Detailed info about Product VVV">4.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.4')">4.1.4</td>
-                    <td onclick="openModal(this, '4.2.4')">4.2.4</td>
-                    <td onclick="openModal(this, '4.3.4')">4.3.4</td>
-                    <td onclick="openModal(this, '4.4.4')">4.4.4</td>
+                    <td onclick="openModal(this, '4.1.4')" data-content="Detailed info about Product WWW">4.1.4</td>
+                    <td onclick="openModal(this, '4.2.4')" data-content="Detailed info about Product XXX">4.2.4</td>
+                    <td onclick="openModal(this, '4.3.4')" data-content="Detailed info about Product YYY">4.3.4</td>
+                    <td onclick="openModal(this, '4.4.4')" data-content="Detailed info about Product ZZZ">4.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '4.1.5')">4.1.5</td>
-                    <td onclick="openModal(this, '4.2.5')">4.2.5</td>
-                    <td onclick="openModal(this, '4.3.5')">4.3.5</td>
-                    <td onclick="openModal(this, '4.4.5')">4.4.5</td>
+                    <td onclick="openModal(this, '4.1.5')" data-content="Detailed info about Product AAAA">4.1.5</td>
+                    <td onclick="openModal(this, '4.2.5')" data-content="Detailed info about Product BBBB">4.2.5</td>
+                    <td onclick="openModal(this, '4.3.5')" data-content="Detailed info about Product CCCC">4.3.5</td>
+                    <td onclick="openModal(this, '4.4.5')" data-content="Detailed info about Product DDDD">4.4.5</td>
                 </tr>
                 <!-- First column with 6 rows -->
                 <tr>
-                    <td onclick="openModal(this, '4.1.6')">4.1.6</td>
+                    <td onclick="openModal(this, '4.1.6')" data-content="Detailed info about Product EEEE">4.1.6</td>
                     <td></td><td></td><td></td>
                 </tr>
             </tbody>
@@ -345,39 +345,39 @@
             <thead><tr><th colspan="4">5</th></tr></thead>
             <tbody>
                 <tr>
-                    <td onclick="openModal(this, '5.1.1')">5.1.1</td>
-                    <td onclick="openModal(this, '5.2.1')">5.2.1</td>
-                    <td onclick="openModal(this, '5.3.1')">5.3.1</td>
-                    <td onclick="openModal(this, '5.4.1')">5.4.1</td>
+                    <td onclick="openModal(this, '5.1.1')" data-content="Detailed info about Product FFFF">5.1.1</td>
+                    <td onclick="openModal(this, '5.2.1')" data-content="Detailed info about Product GGGG">5.2.1</td>
+                    <td onclick="openModal(this, '5.3.1')" data-content="Detailed info about Product HHHH">5.3.1</td>
+                    <td onclick="openModal(this, '5.4.1')" data-content="Detailed info about Product IIII">5.4.1</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.2')">5.1.2</td>
-                    <td onclick="openModal(this, '5.2.2')">5.2.2</td>
-                    <td onclick="openModal(this, '5.3.2')">5.3.2</td>
-                    <td onclick="openModal(this, '5.4.2')">5.4.2</td>
+                    <td onclick="openModal(this, '5.1.2')" data-content="Detailed info about Product JJJJ">5.1.2</td>
+                    <td onclick="openModal(this, '5.2.2')" data-content="Detailed info about Product KKKK">5.2.2</td>
+                    <td onclick="openModal(this, '5.3.2')" data-content="Detailed info about Product LLLL">5.3.2</td>
+                    <td onclick="openModal(this, '5.4.2')" data-content="Detailed info about Product MMMM">5.4.2</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.3')">5.1.3</td>
-                    <td onclick="openModal(this, '5.2.3')">5.2.3</td>
-                    <td onclick="openModal(this, '5.3.3')">5.3.3</td>
-                    <td onclick="openModal(this, '5.4.3')">5.4.3</td>
+                    <td onclick="openModal(this, '5.1.3')" data-content="Detailed info about Product NNNN">5.1.3</td>
+                    <td onclick="openModal(this, '5.2.3')" data-content="Detailed info about Product OOOO">5.2.3</td>
+                    <td onclick="openModal(this, '5.3.3')" data-content="Detailed info about Product PPPP">5.3.3</td>
+                    <td onclick="openModal(this, '5.4.3')" data-content="Detailed info about Product QQQQ">5.4.3</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.4')">5.1.4</td>
-                    <td onclick="openModal(this, '5.2.4')">5.2.4</td>
-                    <td onclick="openModal(this, '5.3.4')">5.3.4</td>
-                    <td onclick="openModal(this, '5.4.4')">5.4.4</td>
+                    <td onclick="openModal(this, '5.1.4')" data-content="Detailed info about Product RRRR">5.1.4</td>
+                    <td onclick="openModal(this, '5.2.4')" data-content="Detailed info about Product SSSS">5.2.4</td>
+                    <td onclick="openModal(this, '5.3.4')" data-content="Detailed info about Product TTTT">5.3.4</td>
+                    <td onclick="openModal(this, '5.4.4')" data-content="Detailed info about Product UUUU">5.4.4</td>
                 </tr>
                 <tr>
-                    <td onclick="openModal(this, '5.1.5')">5.1.5</td>
-                    <td onclick="openModal(this, '5.2.5')">5.2.5</td>
-                    <td onclick="openModal(this, '5.3.5')">5.3.5</td>
-                    <td onclick="openModal(this, '5.4.5')">5.4.5</td>
+                    <td onclick="openModal(this, '5.1.5')" data-content="Detailed info about Product VVVV">5.1.5</td>
+                    <td onclick="openModal(this, '5.2.5')" data-content="Detailed info about Product WWWW">5.2.5</td>
+                    <td onclick="openModal(this, '5.3.5')" data-content="Detailed info about Product XXXX">5.3.5</td>
+                    <td onclick="openModal(this, '5.4.5')" data-content="Detailed info about Product YYYY">5.4.5</td>
                 </tr>
                 <!-- Third column with 6 rows -->
                 <tr>
                     <td></td><td></td>
-                    <td onclick="openModal(this, '5.3.6')">5.3.6</td>
+                    <td onclick="openModal(this, '5.3.6')" data-content="Detailed info about Product ZZZZ">5.3.6</td>
                     <td></td>
                 </tr>
             </tbody>
@@ -387,13 +387,13 @@
         <table class="table">
             <thead><tr><th>6</th></tr></thead>
             <tbody>
-                <tr><td onclick="openModal(this, '6.1.1')">6.1.1</td></tr>
-                <tr><td onclick="openModal(this, '6.1.2')">6.1.2</td></tr>
-                <tr><td onclick="openModal(this, '6.1.3')">6.1.3</td></tr>
-                <tr><td onclick="openModal(this, '6.1.4')">6.1.4</td></tr>
-                <tr><td onclick="openModal(this, '6.1.5')">6.1.5</td></tr>
-                <tr><td onclick="openModal(this, '6.1.6')">6.1.6</td></tr>
-                <tr><td onclick="openModal(this, '6.1.7')">6.1.7</td></tr>
+                <tr><td onclick="openModal(this, '6.1.1')" data-content="Detailed info about Product AAAAA">6.1.1</td></tr>
+                <tr><td onclick="openModal(this, '6.1.2')" data-content="Detailed info about Product BBBBB">6.1.2</td></tr>
+                <tr><td onclick="openModal(this, '6.1.3')" data-content="Detailed info about Product CCCCC">6.1.3</td></tr>
+                <tr><td onclick="openModal(this, '6.1.4')" data-content="Detailed info about Product DDDDD">6.1.4</td></tr>
+                <tr><td onclick="openModal(this, '6.1.5')" data-content="Detailed info about Product EEEEE">6.1.5</td></tr>
+                <tr><td onclick="openModal(this, '6.1.6')" data-content="Detailed info about Product FFFFF">6.1.6</td></tr>
+                <tr><td onclick="openModal(this, '6.1.7')" data-content="Detailed info about Product GGGGG">6.1.7</td></tr>
             </tbody>
         </table>
 
@@ -401,11 +401,11 @@
         <table class="table">
             <thead><tr><th>7</th></tr></thead>
             <tbody>
-                <tr><td onclick="openModal(this, '7.1.1')">7.1.1</td></tr>
-                <tr><td onclick="openModal(this, '7.1.2')">7.1.2</td></tr>
-                <tr><td onclick="openModal(this, '7.1.3')">7.1.3</td></tr>
-                <tr><td onclick="openModal(this, '7.1.4')">7.1.4</td></tr>
-                <tr><td onclick="openModal(this, '7.1.5')">7.1.5</td></tr>
+                <tr><td onclick="openModal(this, '7.1.1')" data-content="Detailed info about Product HHHHH">7.1.1</td></tr>
+                <tr><td onclick="openModal(this, '7.1.2')" data-content="Detailed info about Product IIIII">7.1.2</td></tr>
+                <tr><td onclick="openModal(this, '7.1.3')" data-content="Detailed info about Product JJJJJ">7.1.3</td></tr>
+                <tr><td onclick="openModal(this, '7.1.4')" data-content="Detailed info about Product KKKKK">7.1.4</td></tr>
+                <tr><td onclick="openModal(this, '7.1.5')" data-content="Detailed info about Product LLLLL">7.1.5</td></tr>
             </tbody>
         </table>
     </div>
@@ -433,13 +433,28 @@
         function openModal(cell, cellName) {
             currentCell = cell;
             currentCellName = cellName;
-            const existingText = cell.innerText;
-            document.getElementById('cellContent').innerText = existingText;
+            const content = cell.getAttribute('data-content');
+            document.getElementById('cellContent').innerText = content;
             document.getElementById('myModal').style.display = 'flex';
         }
 
         function closeModal() {
             document.getElementById('myModal').style.display = 'none';
+        }
+
+        function populateCellList() {
+            const cellList = document.getElementById('cellList');
+            cellList.innerHTML = ''; // Clear existing list items
+
+            // Select all table cells with data-content attribute
+            const cells = document.querySelectorAll('td[data-content]');
+            cells.forEach(cell => {
+                const content = cell.getAttribute('data-content');
+                const location = cell.innerText; // Get the cell location
+                const listItem = document.createElement('li');
+                listItem.innerText = `${content} (${location})`;
+                cellList.appendChild(listItem);
+            });
         }
 
         function filterList() {
