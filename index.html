@@ -163,6 +163,17 @@
         .cell-list li:last-child {
             border-bottom: none;
         }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+                align-items: center;
+            }
+            .table {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body onload="populateCellList()">
